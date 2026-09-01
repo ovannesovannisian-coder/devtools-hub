@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Developer Tools — JSON, Base64, Hash, Regex, CSV, Timestamp & More</title>
+<meta name="description" content="Free, private, client-side developer tools: JSON formatter, Base64 encode/decode, URL encoder, hash generator (MD5/SHA), regex tester, timestamp converter, CSV ⇄ JSON, and more. Runs in your browser — no data leaves your device.">
+<link rel="canonical" href="https://ovannesovannisian-coder.github.io/devtools-hub/">
+<meta property="og:title" content="Free Developer Tools — JSON, Base64, Hash, Regex, CSV, Timestamp">
+<meta property="og:description" content="Free client-side dev tools. No tracking, no uploads — everything runs in your browser.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ovannesovannisian-coder.github.io/devtools-hub/">
+<meta name="robots" content="index,follow">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0f1a;--surface:#131b2e;--card:#1a2340;--text:#e4e8f1;--muted:#8b95a8;--accent:#3b82f6;--accent2:#10b981;--border:#243044;--radius:12px}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:var(--accent)}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:50;background:rgba(10,15,26,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;gap:16px}
+.logo{font-weight:800;font-size:1.15rem;color:var(--text);text-decoration:none;white-space:nowrap}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:14px;flex-wrap:wrap}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem}
+.nav-links a:hover{color:var(--text)}
+.hero{padding:56px 0 28px;text-align:center}
+.hero h1{font-size:2.6rem;font-weight:900;letter-spacing:-.02em;line-height:1.1;margin-bottom:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--muted);max-width:720px;margin:0 auto 14px}
+.badge{display:inline-flex;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--border);padding:6px 12px;border-radius:999px;color:var(--muted);font-size:.82rem;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;padding:18px 0 28px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:10px}
+.card h2{font-size:1.05rem}
+.card p{color:var(--muted);font-size:.9rem}
+label{font-size:.85rem;color:var(--muted);display:block;margin:6px 0 6px}
+textarea,input,select{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:10px;padding:10px 12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9rem}
+textarea{min-height:120px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.btn{appearance:none;border:none;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer;font-size:.9rem}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn:active{transform:scale(.98)}
+.small{font-size:.82rem;color:var(--muted)}
+.kbd{background:var(--card);border:1px solid var(--border);border-bottom-width:2px;border-radius:6px;padding:1px 6px;font-size:.8rem}
+.out{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;min-height:44px;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace,monospace;font-size:.88rem}
+.pill{display:inline-block;border:1px solid var(--border);background:var(--card);border-radius:999px;padding:4px 10px;font-size:.78rem;color:var(--muted);margin-right:6px}
+footer{border-top:1px solid var(--border);padding:22px 0;color:var(--muted);font-size:.85rem;text-align:center}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">🔧 <span>DevTools</span> Hub</a>
+    <nav class="nav-links">
+      <a href="#json">JSON</a>
+      <a href="#base64">Base64</a>
+      <a href="#url">URL</a>
+      <a href="#hash">Hash</a>
+      <a href="#regex">Regex</a>
+      <a href="#time">Time</a>
+      <a href="#csv">CSV⇄JSON</a>
+      <a href="https://ovannesovannisian-coder.github.io/" target="_blank" rel="noopener">Portfolio →</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <div class="badge">🔒 100% client-side — no uploads, no tracking</div>
+    <h1>Free Developer Tools</h1>
+    <p>Fast, private utilities for everyday development. JSON, Base64, URL encode, hash, regex, timestamp, and CSV conversions — everything runs locally in your browser.</p>
+    <p class="small">Tip: use <span class="kbd">Ctrl</span> + <span class="kbd">K</span> to jump between tools. Built by <a href="https://github.com/ovannesovannisian-coder" target="_blank" rel="noopener">ovannesovannisian-coder</a> · <a href="https://ovannesovannisian-coder.github.io/" target="_blank" rel="noopener">more tools &amp; services</a></p>
+  </section>
+
+  <section class="grid">
+    <!-- JSON -->
+    <div class="card" id="json">
+      <h2>🧩 JSON Formatter &amp; Validator</h2>
+      <p>Paste JSON to format, minify, and validate with error location.</p>
+      <label for="json-in">Input JSON</label>
+      <textarea id="json-in" placeholder='{"name":"Ada","skills":["python"]}'></textarea>
+      <div class="row">
+        <button class="btn btn-primary" id="json-format">Format</button>
+        <button class="btn btn-secondary" id="json-minify">Minify</button>
+        <button class="btn btn-secondary" id="json-copy">Copy</button>
+      </div>
+      <div class="out" id="json-out">Output will appear here.</div>
+      <div class="small" id="json-meta"></div>
+    </div>
+
+    <!-- Base64 -->
+    <div class="card" id="base64">
+      <h2>🔐 Base64 Encode / Decode</h2>
+      <p>UTF-8 safe Base64 with error handling.</p>
+      <label for="b64-in">Text / Base64</label>
+      <textarea id="b64-in" placeholder="Hello, world!"></textarea>
+      <div class="row">
+        <button class="btn btn-primary" id="b64-enc">Encode → Base64</button>
+        <button class="btn btn-secondary" id="b64-dec">Decode → Text</button>
+        <button class="btn btn-secondary" id="b64-copy">Copy</button>
+      </div>
+      <div class="out" id="b64-out"></div>
+    </div>
+
+    <!-- URL -->
+    <div class="card" id="url">
+      <h2>🔗 URL Encode / Decode</h2>
+      <p>Percent-encoding for URLs and query strings.</p>
+      <label for="url-in">Text / URL</label>
+      <textarea id="url-in" placeholder="https://example.com/?q=hello world & lang=en"></textarea>
+      <div class="row">
+        <button class="btn btn-primary" id="url-enc">Encode</button>
+        <button class="btn btn-secondary" id="url-dec">Decode</button>
+        <button class="btn btn-secondary" id="url-copy">Copy</button>
+      </div>
+      <div class="out" id="url-out"></div>
+    </div>
+
+    <!-- Hash -->
+    <div class="card" id="hash">
+      <h2>#️⃣ Hash Generator</h2>
+      <p>SubtleCrypto — SHA-1 / SHA-256 / SHA-384 / SHA-512 (client-side).</p>
+      <label for="hash-in">Input text</label>
+      <textarea id="hash-in" placeholder="hash me"></textarea>
+      <div class="row">
+        <select id="hash-alg" style="max-width:220px">
+          <option value="SHA-256">SHA-256</option>
+          <option value="SHA-1">SHA-1</option>
+          <option value="SHA-384">SHA-384</option>
+          <option value="SHA-512">SHA-512</option>
+        </select>
+        <button class="btn btn-primary" id="hash-go">Generate</button>
+        <button class="btn btn-secondary" id="hash-copy">Copy</button>
+      </div>
+      <div class="out" id="hash-out"></div>
+      <div class="small">MD5 is intentionally omitted (insecure). Use SHA-256.</div>
+    </div>
+
+    <!-- Regex -->
+    <div class="card" id="regex">
+      <h2>🧪 Regex Tester</h2>
+      <p>JavaScript RegExp with flags and live match highlighting.</p>
+      <label>Pattern</label>
+      <div class="row">
+        <input id="re-pat" placeholder="\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}\\b" style="flex:1">
+        <input id="re-flags" value="gi" style="max-width:90px" placeholder="flags">
+      </div>
+      <label for="re-text">Test text</label>
+      <textarea id="re-text" placeholder="Contact: ada@example.com, bob@test.org"></textarea>
+      <div class="row">
+        <button class="btn btn-primary" id="re-go">Test</button>
+        <button class="btn btn-secondary" id="re-copy">Copy matches</button>
+      </div>
+      <div class="out" id="re-out"></div>
+    </div>
+
+    <!-- Timestamp -->
+    <div class="card" id="time">
+      <h2>⏱️ Timestamp Converter</h2>
+      <p>Unix ↔ ISO ↔ Local. Supports seconds and milliseconds.</p>
+      <label for="ts-in">Unix timestamp or ISO date</label>
+      <input id="ts-in" placeholder="1717970000 or 2024-06-09T12:00:00Z">
+      <div class="row" style="margin-top:8px">
+        <button class="btn btn-primary" id="ts-from-unix">From Unix</button>
+        <button class="btn btn-secondary" id="ts-from-iso">From ISO</button>
+        <button class="btn btn-secondary" id="ts-now">Now</button>
+      </div>
+      <div class="out" id="ts-out"></div>
+    </div>
+
+    <!-- CSV <-> JSON -->
+    <div class="card" id="csv">
+      <h2>🔄 CSV ⇄ JSON</h2>
+      <p>Simple delimiter-aware converter (comma, semicolon, tab).</p>
+      <label>Delimiter</label>
+      <select id="csv-delim" style="max-width:200px">
+        <option value=",">Comma (,)</option>
+        <option value=";">Semicolon (;)</option>
+        <option value="\t">Tab</option>
+      </select>
+      <label for="csv-in">Input (CSV or JSON array)</label>
+      <textarea id="csv-in" placeholder="name,age
+Ada,30
+Bob,25"></textarea>
+      <div class="row">
+        <button class="btn btn-primary" id="csv-to-json">CSV → JSON</button>
+        <button class="btn btn-secondary" id="csv-to-csv">JSON → CSV</button>
+        <button class="btn btn-secondary" id="csv-copy">Copy</button>
+      </div>
+      <div class="out" id="csv-out"></div>
+    </div>
+
+    <!-- JWT (no verify) -->
+    <div class="card" id="jwt">
+      <h2>🎫 JWT Decoder</h2>
+      <p>Decode header &amp; payload (no signature verification — client-side only).</p>
+      <label for="jwt-in">JWT token</label>
+      <textarea id="jwt-in" placeholder="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjMifQ..."></textarea>
+      <div class="row">
+        <button class="btn btn-primary" id="jwt-go">Decode</button>
+        <button class="btn btn-secondary" id="jwt-copy">Copy payload</button>
+      </div>
+      <div class="out" id="jwt-out"></div>
+      <div class="small">Never paste secrets. Verification requires your secret on a server.</div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-bottom:28px">
+    <h2>Need data pipelines &amp; automation?</h2>
+    <p>We build scraping, ETL, and monitoring jobs with fixed-price quotes. Pay in <strong>USDT on TON</strong> after scope approval.</p>
+    <p class="small" style="margin-top:6px">Wallet: <code id="usdt-addr" style="word-break:break-all">UQDHA5jEi88JRomsstaA-srnIJyayuK95FsGuXI6_B2Cngbk</code> <button class="btn btn-secondary" id="copy-addr" style="padding:6px 10px;margin-left:8px">Copy</button> <a href="https://tonscan.com/address/UQDHA5jEi88JRomsstaA-srnIJyayuK95FsGuXI6_B2Cngbk" target="_blank" rel="noopener">Verify →</a></p>
+    <div class="row" style="margin-top:10px">
+      <a class="btn btn-primary" href="https://github.com/ovannesovannisian-coder/ovannesovannisian-coder.github.io/issues/new?template=service-inquiry.yml" target="_blank" rel="noopener">Request a fixed quote</a>
+      <a class="btn btn-secondary" href="https://ovannesovannisian-coder.github.io/" target="_blank" rel="noopener">View products</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 ovannesovannisian-coder · MIT · <a href="https://github.com/ovannesovannisian-coder/devtools-hub" target="_blank" rel="noopener">Source</a> · <a href="https://ovannesovannisian-coder.github.io/">Portfolio</a>
+  </div>
+</footer>
+
+<script>
+// helpers
+const $ = s => document.querySelector(s);
+const out = (id, text) => { const el=$(id); if(el) el.textContent = text; };
+const copyText = async (text) => { try{ await navigator.clipboard.writeText(text); }catch(e){ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); } };
+
+// JSON
+function tryFormat(minify){
+  const src=$("#json-in").value.trim();
+  if(!src){ out("#json-out","Paste JSON first."); return; }
+  try{
+    const obj=JSON.parse(src);
+    const pretty = minify ? JSON.stringify(obj) : JSON.stringify(obj,null,2);
+    out("#json-out", pretty);
+    $("#json-meta").textContent = `Valid JSON · ${Array.isArray(obj)? obj.length+' items' : typeof obj} · ${pretty.length} chars`;
+  }catch(e){
+    out("#json-out","❌ "+e.message);
+    $("#json-meta").textContent="";
+  }
+}
+$("#json-format")?.addEventListener("click", ()=>tryFormat(false));
+$("#json-minify")?.addEventListener("click", ()=>tryFormat(true));
+$("#json-copy")?.addEventListener("click", ()=>copyText($("#json-out").textContent));
+
+// Base64 (UTF-8 safe)
+function b64encode(str){ return btoa(unescape(encodeURIComponent(str))); }
+function b64decode(str){
+  // tolerate missing padding / whitespace
+  const s=str.trim().replace(/\s+/g,'');
+  return decodeURIComponent(escape(atob(s)));
+}
+$("#b64-enc")?.addEventListener("click", ()=>{
+  try{ out("#b64-out", b64encode($("#b64-in").value)); }catch(e){ out("#b64-out","❌ "+e.message); }
+});
+$("#b64-dec")?.addEventListener("click", ()=>{
+  try{ out("#b64-out", b64decode($("#b64-in").value)); }catch(e){ out("#b64-out","❌ Invalid Base64: "+e.message); }
+});
+$("#b64-copy")?.addEventListener("click", ()=>copyText($("#b64-out").textContent));
+
+// URL
+$("#url-enc")?.addEventListener("click", ()=>{ try{ out("#url-out", encodeURIComponent($("#url-in").value)); }catch(e){ out("#url-out","❌ "+e.message); } });
+$("#url-dec")?.addEventListener("click", ()=>{ try{ out("#url-out", decodeURIComponent($("#url-in").value)); }catch(e){ out("#url-out","❌ "+e.message); } });
+$("#url-copy")?.addEventListener("click", ()=>copyText($("#url-out").textContent));
+
+// Hash
+async function doHash(){
+  const text=$("#hash-in").value;
+  const alg=$("#hash-alg").value;
+  if(!text){ out("#hash-out","Enter text to hash."); return; }
+  const data=new TextEncoder().encode(text);
+  const buf=await crypto.subtle.digest(alg, data);
+  const hex=[...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,"0")).join("");
+  out("#hash-out", hex);
+}
+$("#hash-go")?.addEventListener("click", doHash);
+$("#hash-copy")?.addEventListener("click", ()=>copyText($("#hash-out").textContent));
+
+// Regex
+$("#re-go")?.addEventListener("click", ()=>{
+  const pat=$("#re-pat").value;
+  const flags=$("#re-flags").value;
+  const text=$("#re-text").value;
+  if(!pat){ out("#re-out","Enter a pattern."); return; }
+  try{
+    const re=new RegExp(pat, flags);
+    const matches=[...text.matchAll(re)];
+    if(!matches.length){ out("#re-out","No matches."); return; }
+    const lines=matches.map((m,i)=> `${i+1}. "${m[0]}" at ${m.index}  groups: ${JSON.stringify(m.slice(1))}`);
+    out("#re-out", lines.join("\n") + `\n\nTotal: ${matches.length} match(es)`);
+  }catch(e){ out("#re-out","❌ "+e.message); }
+});
+$("#re-copy")?.addEventListener("click", ()=>copyText($("#re-out").textContent));
+
+// Timestamp
+function tsRender(date, unixSec){
+  const iso=date.toISOString();
+  const local=date.toString();
+  const ms=date.getTime();
+  return `ISO:   ${iso}\nLocal: ${local}\nUnix (s): ${unixSec}\nUnix (ms): ${ms}`;
+}
+$("#ts-from-unix")?.addEventListener("click", ()=>{
+  const raw=$("#ts-in").value.trim();
+  if(!raw){ out("#ts-out","Enter a unix timestamp."); return; }
+  const n=Number(raw);
+  if(!Number.isFinite(n)){ out("#ts-out","❌ Not a number."); return; }
+  // heuristic: > 1e12 is ms
+  const ms = n > 1e12 ? n : n*1000;
+  const d=new Date(ms);
+  if(isNaN(d.getTime())){ out("#ts-out","❌ Invalid timestamp."); return; }
+  out("#ts-out", tsRender(d, Math.floor(d.getTime()/1000)));
+});
+$("#ts-from-iso")?.addEventListener("click", ()=>{
+  const raw=$("#ts-in").value.trim();
+  if(!raw){ out("#ts-out","Enter an ISO date."); return; }
+  const d=new Date(raw);
+  if(isNaN(d.getTime())){ out("#ts-out","❌ Invalid date. Try 2024-06-09T12:00:00Z"); return; }
+  out("#ts-out", tsRender(d, Math.floor(d.getTime()/1000)));
+});
+$("#ts-now")?.addEventListener("click", ()=>{
+  const d=new Date();
+  $("#ts-in").value = String(Math.floor(d.getTime()/1000));
+  out("#ts-out", tsRender(d, Math.floor(d.getTime()/1000)));
+});
+
+// CSV <-> JSON
+function parseCSV(text, delim){
+  const rows=[]; let row=[]; let cur=""; let inQ=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(c === '"'){
+      if(inQ && text[i+1]==='"'){ cur+='"'; i++; }
+      else inQ=!inQ;
+    } else if(c===delim && !inQ){ row.push(cur); cur=""; }
+    else if((c==="\n"||c==="\r") && !inQ){
+      if(c==="\r" && text[i+1]==="\n") i++;
+      row.push(cur); rows.push(row); row=[]; cur="";
+    } else cur+=c;
+  }
+  row.push(cur); rows.push(row);
+  // trim trailing empty row
+  if(rows.length && rows[rows.length-1].length===1 && rows[rows.length-1][0]==="") rows.pop();
+  return rows;
+}
+function toCSV(rows, delim){
+  return rows.map(r=> r.map(v=>{
+    const s=String(v??"");
+    if(s.includes(delim)||s.includes('"')||s.includes("\n")) return '"'+s.replace(/"/g,'""')+'"';
+    return s;
+  }).join(delim)).join("\n");
+}
+$("#csv-to-json")?.addEventListener("click", ()=>{
+  const delim=$("#csv-delim").value;
+  const src=$("#csv-in").value.trim();
+  if(!src){ out("#csv-out","Paste CSV first."); return; }
+  try{
+    const rows=parseCSV(src, delim);
+    if(rows.length<2){ out("#csv-out","❌ Need header + at least 1 row."); return; }
+    const header=rows[0];
+    const arr=rows.slice(1).map(r=>{
+      const o={}; header.forEach((h,i)=> o[h]=r[i]??""); return o;
+    });
+    out("#csv-out", JSON.stringify(arr,null,2));
+  }catch(e){ out("#csv-out","❌ "+e.message); }
+});
+$("#csv-to-csv")?.addEventListener("click", ()=>{
+  const delim=$("#csv-delim").value;
+  const src=$("#csv-in").value.trim();
+  if(!src){ out("#csv-out","Paste JSON array first."); return; }
+  try{
+    const arr=JSON.parse(src);
+    if(!Array.isArray(arr) || !arr.length) throw new Error("Expected non-empty JSON array");
+    const header=[...new Set(arr.flatMap(o=>Object.keys(o)))];
+    const rows=[header, ...arr.map(o=> header.map(h=> o[h]??""))];
+    out("#csv-out", toCSV(rows, delim));
+  }catch(e){ out("#csv-out","❌ "+e.message); }
+});
+$("#csv-copy")?.addEventListener("click", ()=>copyText($("#csv-out").textContent));
+
+// JWT
+function b64urlDecode(s){
+  s=s.replace(/-/g,"+").replace(/_/g,"/");
+  const pad=s.length%4; if(pad) s+="=".repeat(4-pad);
+  return decodeURIComponent(escape(atob(s)));
+}
+$("#jwt-go")?.addEventListener("click", ()=>{
+  const tok=$("#jwt-in").value.trim();
+  if(!tok){ out("#jwt-out","Paste a JWT."); return; }
+  const parts=tok.split(".");
+  if(parts.length<2){ out("#jwt-out","❌ Invalid JWT (need header.payload[.signature])"); return; }
+  try{
+    const header=JSON.parse(b64urlDecode(parts[0]));
+    const payload=JSON.parse(b64urlDecode(parts[1]));
+    out("#jwt-out", "Header:\n"+JSON.stringify(header,null,2)+"\n\nPayload:\n"+JSON.stringify(payload,null,2));
+  }catch(e){ out("#jwt-out","❌ "+e.message); }
+});
+$("#jwt-copy")?.addEventListener("click", ()=>copyText($("#jwt-out").textContent));
+
+// Copy wallet
+$("#copy-addr")?.addEventListener("click", async ()=>{
+  const t=$("#usdt-addr").textContent.trim();
+  await copyText(t);
+  const b=$("#copy-addr"); const old=b.textContent; b.textContent="Copied!"; setTimeout(()=>b.textContent=old,1200);
+});
+
+// quick jump with Ctrl+K
+document.addEventListener("keydown", (e)=>{
+  if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==="k"){
+    e.preventDefault();
+    const id=prompt("Jump to: json, base64, url, hash, regex, time, csv, jwt");
+    if(id && document.getElementById(id)) document.getElementById(id).scrollIntoView({behavior:"smooth", block:"start"});
+  }
+});
+</script>
+</body>
+</html>
